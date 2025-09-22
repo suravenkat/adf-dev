@@ -1,0 +1,64 @@
+{
+	"name": "pl_IfCondition",
+	"properties": {
+		"activities": [
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input, 'files')",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "copyTables",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pl_copy_sql_table",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "CopyFiles",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pl_copy_file",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input": {
+				"type": "string",
+				"defaultValue": "files"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-09-04T15:45:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

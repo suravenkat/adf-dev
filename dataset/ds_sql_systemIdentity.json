@@ -1,0 +1,47 @@
+{
+	"name": "ds_sql_systemIdentity",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sql_systemIdentity",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "team",
+				"type": "nvarchar"
+			},
+			{
+				"name": "score",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "matches_played",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "last_updated",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "iplteams"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

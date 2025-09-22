@@ -1,0 +1,21 @@
+{
+	"name": "adf-b15-dev",
+	"properties": {
+		"globalParameters": {
+			"conatiner": {
+				"type": "string",
+				"value": "adlsgen2container"
+			},
+			"filePath": {
+				"type": "string",
+				"value": "target"
+			}
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ef9fe8c6-2357-4884-9e62-d266103a6dc5",
+		"tenantId": "100a7e00-c249-4c60-b1c3-70200fb7e3dc"
+	}
+}

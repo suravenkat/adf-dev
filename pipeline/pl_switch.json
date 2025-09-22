@@ -1,0 +1,111 @@
+{
+	"name": "pl_switch",
+	"properties": {
+		"activities": [
+			{
+				"name": "Switch1",
+				"type": "Switch",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@pipeline().parameters.InputValue",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "finance",
+							"activities": [
+								{
+									"name": "finance",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "pl_copy_file",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						},
+						{
+							"value": "sales",
+							"activities": [
+								{
+									"name": "sales",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "pl_getmetdata",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						},
+						{
+							"value": "logistics",
+							"activities": [
+								{
+									"name": "logistics",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "pl_copy_sql_table",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						}
+					],
+					"defaultActivities": [
+						{
+							"name": "default-All-Data-Pipeline",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pl_Filter",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"InputValue": {
+				"type": "string",
+				"defaultValue": "finance"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-09-08T15:04:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

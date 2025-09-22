@@ -1,0 +1,32 @@
+{
+	"name": "schduleTrigger",
+	"properties": {
+		"description": "schduleTrigger",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_copy_file_Global_Parameter",
+					"type": "PipelineReference"
+				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "pl_Filter",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2025-09-19T20:53:00",
+				"endTime": "2025-09-20T21:43:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

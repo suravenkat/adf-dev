@@ -1,0 +1,13 @@
+{
+	"name": "ds_source_sql_incremental_load_new",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_source_sql_database",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

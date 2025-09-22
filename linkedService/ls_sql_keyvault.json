@@ -1,0 +1,18 @@
+{
+	"name": "ls_sql_keyvault",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_AzureKeyVault1_sql",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sqldbsecretb15"
+			}
+		}
+	}
+}
